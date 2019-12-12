@@ -1,0 +1,52 @@
+<div class="container">
+  <form>
+    <div class="form-group">
+      <h1 class="text-center text-primary">Todo List</h1>
+      <div class="input-group-prepend">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Add ToDo"
+          name="todo"
+          [(ngModel)]="selectedTask.task"
+        />
+        <button class="input-group-text" (click)="add()">Add</button>
+      </div>
+    </div>
+    <div class="data">
+      <ul class="list-instyled">
+        <!-- <li
+          *ngFor="let todo of todoArray"
+          [ngClass]="{
+            'task-finished': this.isFinished,
+            'task-unfinished': !this.isFinished
+          }"
+        > -->
+        <li
+          *ngFor="let todo of todoArray"
+          [ngClass]="{
+            'task-finished': this.isFinished,
+            'task-unfinished': !this.isFinished,
+            'task-deleted': this.isDeleted
+          }"
+        >
+          {{ todo.task }}
+          <i (click)="deleteItem(todo)" class="material-icons">
+            delete
+          </i>
+
+          <i (click)="finishItem(todo)" class="material-icons">
+            done
+          </i>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
+
+<!-- 
+Para el ngClass:
+'task-deleted': this.isDeleted -->
+
+<!-- <span class="input-group-text" (click)="addTodo(todo.value)">Add</span> -->
+<!-- <i (click)="deleteItem(todo)" class="material-icons"> -->
